@@ -7,36 +7,86 @@ const port = process.env.PORT || 3000
 
 app.use(express.json())
 
-app.post('/users', (req, res) => {
+app.post('/users', async (req, res) => {
+    req.body.CreationDate = Date.now()
     const user = new User(req.body)
 
-    user.save().then(() => {
+    try{
+        await user.save()
         res.status(201).send(user)
-    }).catch((e) => {
-        res.status(400).send(e)
-    })
+    } catch(e) {
+        res.status(500).send(e)
+    }
 })
 
-app.get('/users', (req, res) => {
-    User.find({}).then((users) => {
-        res.send(users)
-    }).catch((e) => {
-        res.status(500).send()
-    })
+app.get('/users', async (req, res) => {
+    try {
+        const user = await User.find({})
+        res.send(user)
+    } catch (e) {
+        res.status(500).send(e)
+    }
 })
 
-app.get('/users/:id', (req, res) => {
+app.get('/users/:FirstName', async (req, res) => {
+    const name = req.params.FirstName
+
+    try {
+        const user = await User.find({FirstName: name})
+        if(!user) {
+            return res.status(404).send()
+        }
+        res.send(user)
+    } catch (e) {
+        res.status(500).send(e)
+    }
+})
+
+app.get('/users/:id', async (req, res) => {
     const _id = req.params.id
 
-    User.findById(_id).then((user) => {
-        if (!user) {
+    try {
+        const user = await User.findById(_id)
+        if(!user) {
+            return res.status(404).send()
+        }
+        res.send(user)
+    } catch (e) {
+        res.status(500).send(e)
+    }
+})
+
+app.patch('/users/:id', async (req, res) => {
+    try {
+        const user = await User.findByIdAndUpdate(req.params.id, req.body, {new: true})
+
+        if(!user){
             return res.status(404).send()
         }
 
         res.send(user)
-    }).catch((e) => {
-        res.status(500).send()
-    })
+    } catch (e) {
+        res.status(500).send(e)
+    }
+})
+
+app.patch('/users/activation/:id', async (req, res) => {
+    try {
+        const user = await User.findById(req.params.id)
+
+        if(user.isActive)
+            await User.updateOne({isActive: false})
+        else
+            await User.updateOne({isActive: true})
+
+        if(!user){
+            return res.status(404).send()
+        }
+
+        res.send(user)
+    } catch (e) {
+        res.status(500).send(e)
+    }
 })
 
 app.listen(port, () => {
