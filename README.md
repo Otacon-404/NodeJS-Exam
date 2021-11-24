@@ -33,6 +33,10 @@ https://www.mongodb.com/try/download/community
 ```sh
 net start MongoDB
 ```
+8. And Rerun Mongod.exe
+```sh
+C:\Program Files\MongoDB\Server\5.0\bin\Mongod.exe
+```
  
  ### Starting the App
 1. Install NPM packages by using the terminal
