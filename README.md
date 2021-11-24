@@ -29,11 +29,13 @@ https://www.mongodb.com/try/download/community
 ```
 5. And run Mongod.exe
 6. Make sure the mongodb server is working
-7. Use this command in case the server was not working
+
+### If Server Not Working
+1. Use this command in CMD if the server was not working
 ```sh
 net start MongoDB
 ```
-8. And Rerun Mongod.exe
+2. And Rerun Mongod.exe
 ```sh
 C:\Program Files\MongoDB\Server\5.0\bin\Mongod.exe
 ```
