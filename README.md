@@ -18,7 +18,7 @@ You will need to install npm.
   ```sh
   https://www.mongodb.com/try/download/community
   ```
-* MongoDB Server is a database for your data
+_MongoDB Server is a database for your data
 
 
 ### Installation
