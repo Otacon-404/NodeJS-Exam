@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 const validator = require('validator')
 
-const User = mongoose.model('User', {
+const userSchema = new mongoose.Schema({
     firstName: {
         type: String,
         required: true,
@@ -34,5 +34,17 @@ const User = mongoose.model('User', {
         default: true
     }
 })
+
+userSchema.methods.toJSON = function () {
+    const user = this
+    const userObject = user.toObject()
+
+    delete userObject.CreationDate
+    delete userObject.__v
+    
+    return userObject
+}
+
+const User = mongoose.model('User', userSchema)
 
 module.exports = User
