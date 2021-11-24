@@ -8,9 +8,9 @@
 
 You will need to install npm.
 * npm
-  ```sh
-  npm install npm@latest -g
-  ```
+```sh
+npm install npm@latest -g
+```
 
 * MongoDB Server
 ```sh
