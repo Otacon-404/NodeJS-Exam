@@ -2,33 +2,36 @@ const mongoose = require('mongoose')
 const validator = require('validator')
 
 const User = mongoose.model('User', {
-    FirstName: {
+    firstName: {
         type: String,
         required: true,
         trim: true,
         lowercase: true,
     },
-    LastName: {
+    lastName: {
         type: String,
         required: true,
         trim: true,
         lowercase: true,
     },
-    DOB: {
+    dob: {
         type: Date,
         required: true,
     },
     isMale: {
         type: Boolean,
+        default: true,
     },
     salary: {
         type: Number,
+        required: true,
     },
     CreationDate: {
         type: Date,
     },
     isActive: {
         type: Boolean,
+        default: true
     }
 })
 

@@ -4,8 +4,10 @@ const User = require('./models/user')
 
 const app = express()
 const port = process.env.PORT || 3000
+const cors = require('cors')
 
-app.use(express.json())
+app.use(cors())
+app.use(express.json()) 
 
 app.post('/users', async (req, res) => {
     req.body.CreationDate = Date.now()
@@ -22,6 +24,7 @@ app.post('/users', async (req, res) => {
 app.get('/users', async (req, res) => {
     try {
         const user = await User.find({})
+        
         res.send(user)
     } catch (e) {
         res.status(500).send(e)
@@ -72,12 +75,7 @@ app.patch('/users/:id', async (req, res) => {
 
 app.patch('/users/activation/:id', async (req, res) => {
     try {
-        const user = await User.findById(req.params.id)
-
-        if(user.isActive)
-            await User.updateOne({isActive: false})
-        else
-            await User.updateOne({isActive: true})
+        const user = await User.findByIdAndUpdate(req.params.id, req.body, {new: true})
 
         if(!user){
             return res.status(404).send()
