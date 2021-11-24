@@ -13,13 +13,13 @@ You will need to install npm.
   ```sh
   npm install npm@latest -g
   ```
-  
-MongoDB Server is a database for your data
 
  * MongoDB Server
   ```sh
   https://www.mongodb.com/try/download/community
   ```
+* MongoDB Server is a database for your data
+
 
 ### Installation
 
