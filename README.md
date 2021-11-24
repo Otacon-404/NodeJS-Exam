@@ -14,7 +14,7 @@ You will need to install npm.
   npm install npm@latest -g
   ```
 
- * MongoDB Server
+* MongoDB Server
   ```sh
   https://www.mongodb.com/try/download/community
   ```
@@ -36,13 +36,14 @@ You will need to install npm.
  ```sh
  net start MongoDB
  ```
-3. Install NPM packages
+ 
+ ### Starting the App
+1. Install NPM packages by using the terminal
    ```sh
    npm install
    ```
-4. Enter your API in `config.js`
-   ```js
-   const API_KEY = 'ENTER YOUR API';
-   ```
-
+2. Start the app
+ ```sh
+ npm start
+ ``` 
 <p align="right">(<a href="#top">back to top</a>)</p>
