@@ -41,7 +41,7 @@ You will need to install npm.
    npm install
    ```
 2. Start the app
- ```sh
- npm start
- ``` 
+   ```sh
+   npm start
+   ``` 
 <p align="right">(<a href="#top">back to top</a>)</p>
