@@ -23,7 +23,7 @@ You will need to install npm.
 
 ### Installation
 
-1. Go to [https://example.com](https://example.com)
+1. Go to [https://www.mongodb.com/try/download/communitym](MongoDB Community Server)
 2. Clone the repo
    ```sh
    git clone https://github.com/your_username_/Project-Name.git
